@@ -1,0 +1,21 @@
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+#datadisplay{
+
+  height: 20%;
+}
+#coordinate{
+  width: 300px;
+}
+#site-info{
+  height: 100%;
+}

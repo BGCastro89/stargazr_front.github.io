@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>STARgazr: Find the best spots for stargazing</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="./style.css"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+
+    </style>
+  </head>
+  <body>
+
+    <div id="datadisplay">
+
+        <button type="button" id="get-conditions-here">Conditions Here</button> <input disabled type="text" id="coordinate" value="Latitude, Longitude">
+      <!-- </span> -->
+        <div id="site-info">
+          <div> Cloud Cover: <span id="cloudCover"> </span> </div>
+          <div> Visibility: <span id="visibility"> </span> </div>
+          <div> Humidity: <span id="humidity"> </span> </div>
+          <div> Precipitation Probability: <span id="precipProbability"> </span> </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPV8hWJYamUd7TCnC6h6YcljuXnFW1lp8"></script>
+    <script src="./jquery-3.1.1.min.js"></script>
+    <script src="./map2.js"></script>
+    <script src="./ExtDraggableObject.js"></script>
+    <script src="./getweatherdata.js"></script>
+
+  </body>
+</html>
