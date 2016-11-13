@@ -71,11 +71,15 @@ function initialize() {
 
                 });
 
+
+
+
+
                 $( "#get-conditions-here" ).click(function() {
                   // alert( "Handler for .click() called." );
                   $.get(darksky_url, function(data) {
-
-                  console.log(JSON.stringify(data));
+                  // 
+                  // console.log(JSON.stringify(data));
 
 
                   var precipProbability = data.currently.precipProbability
@@ -88,10 +92,30 @@ function initialize() {
                   $("#humidity").html(humidity);
                   $("#precipProbability").html(precipProbability);
                   })
+
+                  dist_url = "http://yehhsrujdu.localtunnel.me/distance"
+                  $.get(dist_url,
+                    {
+                      units: "metric",
+                      origins: "37.790319,-122.40014",
+                      destinations: lat_selected+","+long_selected
+                    },
+                    function(dist_data){
+
+                        console.log(dist_data)
+                        $("#dtime").html(dist_data.rows[0].duration.text);
+                        $("#ddist").html(dist_data.rows[0].distance.text);
+                    }
+                  )
+                  //
+                  // lat_selected
+                  // long_selected
+
+
                 });
 
 
-
+ // 37.790319, -122.40014 start in sf
 
   var bounds = {
      0: [[0,  0], [0, 0]],
