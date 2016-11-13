@@ -12,24 +12,36 @@
     </style>
   </head>
   <body>
-
+      <!-- <div> -->
     <div id="datadisplay">
 
-        <button type="button" id="get-conditions-here">Conditions Here</button> <input disabled type="text" id="coordinate" value="Latitude, Longitude">
+        <button type="button" id="get-conditions-here">Find Conditions At:</button> <input disabled type="text" id="coordinate" value="Latitude, Longitude">
       <!-- </span> -->
         <div id="site-info">
-          <div> Cloud Cover: <span id="cloudCover"> </span> </div>
-          <div> Visibility: <span id="visibility"> </span> </div>
-          <div> Humidity: <span id="humidity"> </span> </div>
-          <div> Precipitation Probability: <span id="precipProbability"> </span> </div>
+
+        <div id ="info-group-0">
+          <div> Lunar Phase: <span id="moonPhase"> </span> </div>
           <div> Driving Time: <span id="dtime"> </span> </div>
           <div> Driving Distance: <span id="ddist"> </span> </div>
           <div> Light Pollution: <span id="lightpollution"> </span> </div>
+        </div>
+        <div id ="info-group-1">
+          <div> Cloud Cover: <span id="cloudCover"> </span> </div>
+          <!-- <div> Visibility: <span id="visibility"> </span> </div> -->
+          <div> Humidity: <span id="humidity"> </span> </div>
+          <div> Precipitation Probability: <span id="precipProbability"> </span></div>
+        </div>
+
+        <div id ="info-group-2">
+          <div id="site-rating-container"> Overall Quality: <span id="site-rating"> </span> </div>
+        </div>
+
 
         </div>
     </div>
 
     <div id="map"></div>
+    <!-- </div> -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPV8hWJYamUd7TCnC6h6YcljuXnFW1lp8"></script>
     <script src="./jquery-3.1.1.min.js"></script>
