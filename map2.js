@@ -439,11 +439,14 @@ function getClosestStation (lat, lng) {
 }
 
 function appendCskChart(station) {
-  var domain = 'http://www.cleardarksky.com/c/';
-      action = station + 'cs0.gif?1',
-      uri = domain + action;
+  var domain = 'http://www.cleardarksky.com/c/',
+      anchorAction = station + 'key.html?1',
+      anchorUri = domain + anchorAction,
+      imgAction = station + 'cs0.gif?1',
+      imgUri = domain + imgAction;
 
-  $('img#cskChart').attr('src', uri);
+  $('a#cskLink').attr('href', anchorUri);
+  $('img#cskChart').attr('src', imgUri);
 }
 
 function HomeControl(controlDiv, map) {
