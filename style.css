@@ -10,12 +10,55 @@ html, body {
 
 
 #datadisplay{
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  height: 140px;
 
-  /*height: 20%;*/
+  /*position: fixed;*/
+  /*left: 250px;*/
+  /*height: 100%;*/
+  /*margin-left: -250px;*/
+  /*overflow-y: auto;*/
 }
+
+#map{
+  height: 82%
+}
+
 #coordinate{
   width: 300px;
 }
 #site-info{
   height: 100%;
+  padding: 10px;
 }
+
+
+#info-group-0{
+  float: left;
+}
+#info-group-1{
+  /*float: right;*/
+  padding-left:200px;
+}
+#site-rating-container{
+  font-size: 1.5em;
+  padding-top: 20px;
+}
+
+
+        /*#sidebar-wrapper {*/
+    /*z-index: 1000;*/
+            /*position: fixed;*/
+            /*left: 250px;*/
+    /*width: 0;*/
+            /*height: 100%;*/
+            /*margin-left: -250px;*/
+            /*overflow-y: auto;*/
+    /*background: #000;*/
+    /*-webkit-transition: all 0.5s ease;*/
+    /*-moz-transition: all 0.5s ease;*/
+    /*-o-transition: all 0.5s ease;*/
+    /*transition: all 0.5s ease;*/
+/*}*/

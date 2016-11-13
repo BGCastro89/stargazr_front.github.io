@@ -470,101 +470,124 @@ function HomeControl(controlDiv, map) {
   // controlText.innerHTML = '<b>More Information</b>';
   // controlUI.appendChild(controlText);
   // Setup the click event listeners
-  google.maps.event.addDomListener(controlUI, 'click', function() {
-    var url = "http://djlorenz.github.io/astronomy/lp2006/";
-    window.open(url);
-  });
+  // google.maps.event.addDomListener(controlUI, 'click', function() {
+  //   var url = "http://djlorenz.github.io/astronomy/lp2006/";
+  //   window.open(url);
+  // });
 }
 
 lat_selected = 0
 long_selected = 0
 
 function initialize() {
-  var mapOptions = {
-    zoom: 3,
-    maxZoom: 17,
-    center: new google.maps.LatLng(5, 0),
-    scaleControl: true,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  };
+    var mapOptions = {
+      zoom: 3,
+      maxZoom: 17,
+      center: new google.maps.LatLng(5, 0),
+      scaleControl: true,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    //On mouse click:
+    google.maps.event.addListener(map, 'click', function(event) {
+        //Get lat/long at point
+        lat_selected = event.latLng.lat()
+        long_selected = event.latLng.lng()
+
+        console.log("LAT:"+lat_selected);
+        console.log("LNG:"+long_selected);
+
+        $("#coordinate").val(event.latLng.lat() + ", " + event.latLng.lng());
+        $("#coordinate").select();
+
+        darksky_url = "http://stargazr.us-west-2.elasticbeanstalk.com/weather?lat="+lat_selected+"&lng="+long_selected;
+
+    });
+
+    //on button press to get conditions at a site
+    $( "#get-conditions-here" ).click(function() {
+        $.get(darksky_url, function(weatherdata) {
+
+            //set vars for weather data from request
+            var precipProbability = weatherdata.currently.precipProbability
+            var humidity = weatherdata.currently.humidity
+            var visibility = weatherdata.currently.visibility
+            var cloudCover = weatherdata.currently.cloudCover
+            var moonPhase = weatherdata.daily.data[0].moonPhase //0 tells to grab todays phase. allows 0-7
+
+            //Populate HTML fields
+            $("#cloudCover").html( 100*Math.round(cloudCover) + "%");
+            $("#visibility").html(visibility);
+            $("#humidity").html(100*Math.round(humidity) + "%");
+            $("#precipProbability").html(100*Math.round(precipProbability) + "%");
+            $("#moonPhase").html(100*Math.round(moonPhase) + "% Full")
+
+            //Rate quality based on each parameter
+            precip_quality = (1-Math.sqrt(precipProbability))
+            humid_quality = (Math.pow(-humidity+1,(1/3)))
+            cloud_quality = (1-Math.sqrt(cloudCover))
+
+            console.log("precip:"+precip_quality+"\n",
+                        "humid:"+humid_quality+"\n",
+                        "cloud:"+cloud_quality+"\n");
+
+            //Find overall site quality
+            site_quality = (precip_quality * humid_quality * cloud_quality)*100 // to or not to include * (1-moonPhase)
+            console.log("qual", site_quality);
+            //Determine Site quality description
+            site_quality_discript = ""
+            if (site_quality > 90){
+              site_quality_discript = "Excellent"
+            }
+            else if (site_quality > 80) {
+              site_quality_discript = "Good"
+            }
+            else if (site_quality > 50) {
+              site_quality_discript = "Fair"
+            }
+            else if (site_quality > 30) {
+              site_quality_discript = "Poor"
+            }
+            else {
+              site_quality_discript = "Terrible"
+            }
+            //Populate HTML
+            $("#site-rating").html(Math.round(site_quality) + " - " + site_quality_discript );
+        })
+
+        //Driving Distance/Time request
+        dist_url = "http://stargazr.us-west-2.elasticbeanstalk.com/distance"
+        $.get(dist_url,
+          {
+            units: "metric",
+            origins: "37.790319,-122.40014",
+            destinations: lat_selected+","+long_selected
+          },
+          function(dist_data){
+
+            try {
+              //Assign vars for time and Distance
+              drive_time = dist_data.rows[0].elements[0].duration.text;
+              drive_dist = dist_data.rows[0].elements[0].distance.text;
+              //populate with approprite time and distance
+              $("#dtime").html(drive_time);
+              $("#ddist").html(drive_dist);
+            }
+            catch(err) {
+              //if no route foundm, give N/A message
+              $("#dtime").html("N/A");
+              $("#ddist").html("N/A");
+            }
+          }
+        )
+
+        appendCskChart(getClosestStation(lat_selected, long_selected));
+    });
 
 
-  map = new google.maps.Map(document.getElementById('map'),
-      mapOptions);
-
-                  google.maps.event.addListener(map, 'click', function(event) {
-                //call function to create marker
-
-                lat_selected = event.latLng.lat()
-                long_selected = event.latLng.lng()
-
-                  console.log("LAT:"+lat_selected);
-                  console.log("LNG:"+long_selected);
-
-                    $("#coordinate").val(event.latLng.lat() + ", " + event.latLng.lng());
-                    $("#coordinate").select();
-
-                    darksky_url = "http://stargazr.us-west-2.elasticbeanstalk.com/weather/?lat="+lat_selected+"&lng="+long_selected;
-
-                    // console.log("darksky_url:", darksky_url);
-
-                    //delete the old marker
-                    //if (marker) { marker.setMap(null); }
-
-                    //creer à la nouvelle emplacement
-                    // marker = new google.maps.Marker({ position: event.latLng, map: map});
-
-                });
-
-
-
-
-
-                $( "#get-conditions-here" ).click(function() {
-                  // alert( "Handler for .click() called." );
-                  $.get(darksky_url, function(data) {
-                  // 
-                  // console.log(JSON.stringify(data));
-
-
-                  var precipProbability = data.currently.precipProbability
-                  var humidity = data.currently.humidity
-                  var visibility = data.currently.visibility
-                  var cloudCover = data.currently.cloudCover
-
-                  $("#cloudCover").html( cloudCover);
-                  $("#visibility").html(visibility);
-                  $("#humidity").html(humidity);
-                  $("#precipProbability").html(precipProbability);
-                  })
-
-                  dist_url = "http://yehhsrujdu.localtunnel.me/distance"
-                  $.get(dist_url,
-                    {
-                      units: "metric",
-                      origins: "37.790319,-122.40014",
-                      destinations: lat_selected+","+long_selected
-                    },
-                    function(dist_data){
-
-                        console.log(dist_data)
-                        $("#dtime").html(dist_data.rows[0].duration.text);
-                        $("#ddist").html(dist_data.rows[0].distance.text);
-                    }
-                  )
-                  //
-                  // lat_selected
-                  // long_selected
-
-
-                  appendCskChart(getClosestStation(lat_selected, long_selected));
-
-
-                });
-
-
- // 37.790319, -122.40014 start in sf
-
+//Begin djlorenz's code
   var bounds = {
      0: [[0,  0], [0, 0]],
      1: [[0,  1], [0, 1]],
@@ -751,7 +774,7 @@ function initialize() {
     prevZoomLevel = zoomLevel;
     var z = map.getZoom();
     z < 9 ? zoomLevel = 1 : zoomLevel = 2;
-    console.log(z);
+    // console.log(z);
     if (prevZoomLevel !== zoomLevel || zoomLevel == 2) {
     switch (z)
     {
