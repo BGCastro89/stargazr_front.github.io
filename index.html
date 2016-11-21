@@ -1,53 +1,84 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
 <html>
-  <head>
-    <title>STARgazr: Find the best spots for stargazing</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
-      <link rel="stylesheet" type="text/css" href="./style.css"></script>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
 
-    </style>
-  </head>
-  <body>
-      <!-- <div> -->
-    <div id="datadisplay">
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!-- <script src="assets/js/main.js"></script> -->
+			<script src="landing.js"></script>
+			<!-- <script src="./map.js"></script>
+	    <script src="./ExtDraggableObject.js"></script>
+	    <script src="./getweatherdata.js"></script> -->
 
-        <button type="button" id="get-conditions-here">Find Conditions At:</button> <input disabled type="text" id="coordinate" value="Latitude, Longitude">
-      <!-- </span> -->
-        <div id="site-info">
+	<head>
+		<title>StarGAZR map</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="landing">
 
-        <div id ="info-group-0">
-          <div> Lunar Phase: <span id="moonPhase"> </span> </div>
-          <div> Driving Time: <span id="dtime"> </span> </div>
-          <div> Driving Distance: <span id="ddist"> </span> </div>
-          <div> Light Pollution: <span id="lightpollution"> </span> </div>
-        </div>
-        <div id ="info-group-1">
-          <div> Cloud Cover: <span id="cloudCover"> </span> </div>
-          <!-- <div> Visibility: <span id="visibility"> </span> </div> -->
-          <div> Humidity: <span id="humidity"> </span> </div>
-          <div> Precipitation Probability: <span id="precipProbability"> </span></div>
-          <a id="cskLink" href=""><img id="cskChart" src="" /></a>
-        </div>
+		<!-- Header -->
+			<header id="header" class="alt">
+				<h1><strong><a href="index.html">star</a></strong> Gazr</h1>
+				<nav id="nav">
+					<ul>
+						<!-- <li><a href="index.html">Home</a></li> -->
+						<li><a href="about.html">About</a></li>
+						<!-- <li><a href="elements.html">Elements</a></li> -->
+					</ul>
+				</nav>
+			</header>
 
-        <div id ="info-group-2">
-          <div id="site-rating-container"> Overall Quality: <span id="site-rating"> </span> </div>
-        </div>
+			<!-- <a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a> -->
 
-        </div>
-    </div>
+		<!-- Banner -->
+			<section id="banner">
+				<h2>Stargazing Spots Near:
 
-    <div id="map"></div>
-    <!-- </div> -->
+					<!-- <input type="text" placeholder=""> -->
+				</h2>
+					<form action="map.html" class="form-wrapper cf">
+			        <input id = "location-input" type="text" placeholder="Input not yet supported, Click Below" required>
+			        <button  id = "location-button" type="submit">Engage</button>
+	    		</form>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPV8hWJYamUd7TCnC6h6YcljuXnFW1lp8"></script>
-    <script src="./jquery-3.1.1.min.js"></script>
-    <script src="./map2.js"></script>
-    <script src="./ExtDraggableObject.js"></script>
-    <script src="./getweatherdata.js"></script>
 
-  </body>
+				<!-- <a href="map.html" id="entered-location" class="button special small">Engage</a> -->
+
+
+
+				<ul class="actions">
+					<!-- <li><a href="map.html" id="entered-location" class="button special small">Engage</a></li> -->
+					<li><a id="auto-location" class="button special small" >Use My Location</a></li>
+				</ul>
+			</section>
+
+<!--  -->
+
+<!--
+
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-facebook"></a></li>
+						<li><a href="#" class="icon fa-twitter"></a></li>
+						<li><a href="#" class="icon fa-instagram"></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+					</ul>
+				</div>
+			</footer> -->
+
+
+	</body>
 </html>
