@@ -2,7 +2,7 @@
 
 Stargazr is a webapp to help you find great spots to go stargazing near you.
 
-By gathering data about factors that effect stargazing quality from different sites and services, Stargazr creates a one-stop-shop for finding out all you need to pick a great spot to look up at the night sky.
+By gathering data on factors that effect stargazing quality from different sites and services, Stargazr creates a one-stop-shop for finding out all you need to pick a great spot to look up at the night sky.
 
 Stargazr currently gives you the following information for a chosen stargazing site:
 - Lunar Phase (in % of Full)
@@ -15,8 +15,10 @@ Stargazr currently gives you the following information for a chosen stargazing s
 - Driving time from current location
 - Nearest Clear Dark Sky Chart (Charts are made by A. Danko, selected sites only during testing phatse)
 
-**This project is still in development.** There are some bugs (mostly with styling/responsiveness) and many features not yet implimented. Some features yet to be added are:
+These factors are then put together into a single number to rate the site's quality on a scale of 0 - 100.
+
+**This project is still in development.** There are some bugs (mostly with styling/responsiveness) and many features are not yet implemented. Some features yet to be added are:
 - Forcast for next several days
 - International Space Station overpass
-- Galaxies, Nebulas, Etc visible from that site at that time
-- Planets visible from that site at that time
+- Galaxies, Nebulas, Star Clusters visible from that site at that time
+- Planets visible from that site at that time 
