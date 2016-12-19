@@ -15,7 +15,7 @@ Stargazr currently gives you the following information for a chosen stargazing s
 - Driving time from current location
 - Nearest Clear Dark Sky Chart (Charts are made by A. Danko, selected sites only during testing phatse)
 
-This project is still in development. There are some bugs (mostly with styling/responsiveness) and many features not yet implimented. Some features yet to be added are:
+**This project is still in development.** There are some bugs (mostly with styling/responsiveness) and many features not yet implimented. Some features yet to be added are:
 - Forcast for next several days
 - International Space Station overpass
 - Galaxies, Nebulas, Etc visible from that site at that time
