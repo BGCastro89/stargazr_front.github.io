@@ -9,7 +9,6 @@ Stargazr currently gives you the following information for a chosen stargazing s
 - Humidity (Affects how transparent atmosphere is, and causes condensation on telescopes)
 - Cloud Cover
 - Precipitation Probability
-- Elevation (Higher Elevation means less atmosphere above you to distort night sky)
 - Light Pollution (Based on 2006 data provided by D. Lorenz)
 - Distance from current location
 - Driving time from current location
@@ -22,5 +21,6 @@ These factors are then put together into a single number to rate the site's qual
 - International Space Station overpass
 - Galaxies, Nebulae, Star Clusters visible from that site at that time
 - Planets visible from that site at that time  
+- Elevation (Higher Elevation means less atmosphere above you to distort night sky)
 
 URL: www.briangcastro.com/stargazr
