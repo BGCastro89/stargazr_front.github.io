@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>STARgazr: Find the best spots for stargazing</title>
+    <title>StarGAZR: Find the best spots for stargazing - Map</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
       <link rel="stylesheet" type="text/css" href="./style.css"></script>
@@ -12,39 +12,85 @@
     </style>
   </head>
   <body>
-      <!-- <div> -->
-    <div id="datadisplay">
 
-        <p class="temp-headertext"> Click on a spot on the map to get the coordinates and then press the button below </p>
-        <p class="temp-headertext"> This site is under development. Report may not be accurate.</p>
+    <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" id="closenav" class="closebtn" onclick="closeNav()">&times;</a>
 
-        <button type="button" id="get-conditions-here">Find Conditions At:</button> <input disabled type="text" id="coordinate" value="Latitude, Longitude">
-      <!-- </span> -->
-        <div id="site-info">
+    <div id="site-info">
 
-        <div id ="info-group-0">
-          <div> Lunar Phase: <span id="moonPhase"> </span> </div>
-          <div> Driving Time: <span id="dtime"> </span> </div>
-          <div> Driving Distance: <span id="ddist"> </span> </div>
-          <div> Light Pollution: <span id="lightpollution"> </span> </div>
-        </div>
-        <div id ="info-group-1">
-          <div> Cloud Cover: <span id="cloudCover"> </span> </div>
-          <!-- <div> Visibility: <span id="visibility"> </span> </div> -->
-          <div> Humidity: <span id="humidity"> </span> </div>
-          <div> Precipitation Probability: <span id="precipProbability"> </span></div>
-          <a id="cskLink" href=""><img id="cskChart" src="" /></a>
-        </div>
-
-        <div id ="info-group-2">
-          <div id="site-rating-container"> Overall Quality: <span id="site-rating"> </span> </div>
-        </div>
-
-        </div>
+    <div id ="info-group-0">
+      <div> Lunar Phase: <span id="moonPhase"> </span> </div>
+      <div> Driving Time: <span id="dtime"> </span> </div>
+      <div> Driving Distance: <span id="ddist"> </span> </div>
+      <div> Elevation: <span id="elevation"> </span> </div>
+      <div> Light Pollution: <span id="lightpollution"> </span> </div>
+      <div> Cloud Cover: <span id="cloudCover"> </span> </div>
+      <!-- <div> Visibility: <span id="visibility"> </span> </div> -->
+      <div> Humidity: <span id="humidity"> </span> </div>
+      <div> Precipitation Probability: <span id="precipProbability"> </span></div>
+      <a id="cskLink" href=""><img id="cskChart" src="" /></a>
     </div>
 
-    <div id="map"></div>
-    <!-- </div> -->
+    <div id ="info-group-1">
+      <div id="site-rating-container"> Overall Quality:
+      <div id="site-rating"> </div>
+      </div>
+
+    </div>
+
+    <div id="credits">
+      <p> Credits: </p>
+      <a href="about.html"> starGAZR Developers </a>
+      <a href="https://darksky.net/poweredby/"> Weather By DarkSkyAPI </a>
+      <a href="http://djlorenz.github.io/astronomy/lp2006/"> Light Pollution Map by D. Lorenz </a>
+      <a href="http://www.cleardarksky.com/csk/"> Clear Sky Charts By A. Danko </a>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    <!-- Use any element to open the sidenav -->
+
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <div id="main" style="width:100%;height:100%;">
+
+      <div id="datadisplay">
+
+        <!-- <span onclick="openNav()">See Details</span> -->
+
+          <p class="temp-headertext"> Click on a spot on the map to get coordinates and then press a button </p>
+          <!-- <p class="temp-headertext"> This site is under development. Report may not be accurate.</p> -->
+
+          <!-- <div> <p> Selected Coordinates: <span id="selected_coordinates"> </span> <p> </div>
+          <div> <button type="button" id="set-user-location">  Set Start Location To:</button> <span type="text" id="start_coordinates"> Latitude, Longitude </span> </div>
+          <div> <button type="button" id="get-conditions-here">Find The Conditions At:</button> <span type="text" c> Latitude, Longitude </span> </div> -->
+
+          <div>
+
+          <form id="selectedform" action="">
+              <input disabled  id="selectedloc" type="text" placeholder="SELECTED LOCATION: 37.57479, -122.32121">
+          </form>
+        </div>
+          <div class="big-input" >
+        <span class="input-button" >
+          <form  id="presentform" action="">
+              <input id="start_coordinates" disabled class="search" type="text" placeholder=" Your Location: 37.57479, -122.32121">
+              <button  id="set-user-location" class="submit" type='button' value="Set To Selected">Set Start To Selected</button>
+          </form>
+        </span>
+        <span class="input-button" >
+          <form  id="conditionform" action="">
+              <input id="dest_coordinates" disabled class="search" type="text" placeholder=" Site Location: 24.53359, -120.97461">
+              <button id="get-conditions-here" class="submit" type='button' value=" Find Conditions Here"> Conditions At Selected </button>
+            </form>
+        </span>
+      </div>
+
+      </div>
+      <div id="map"></div>
+    </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPV8hWJYamUd7TCnC6h6YcljuXnFW1lp8"></script>
     <script src="./jquery-3.1.1.min.js"></script>
