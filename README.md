@@ -13,12 +13,12 @@ Stargazr currently gives you the following information for a chosen stargazing s
 - Light Pollution (Based on 2006 data provided by D. Lorenz)
 - Distance from current location
 - Driving time from current location
-- Nearest Clear Dark Sky Chart (Charts are made by A. Danko, selected sites only during testing phatse)
+- Nearest Clear Dark Sky Chart (Charts are made by A. Danko, selected sites only during testing phase)
 
 These factors are then put together into a single number to rate the site's quality on a scale of 0 - 100.
 
 **This project is still in development.** There are some bugs (mostly with styling/responsiveness) and many features are not yet implemented. Some features yet to be added are:
-- Forcast for next several days
+- Forecast for next several days
 - International Space Station overpass
-- Galaxies, Nebulas, Star Clusters visible from that site at that time
-- Planets visible from that site at that time 
+- Galaxies, Nebulae, Star Clusters visible from that site at that time
+- Planets visible from that site at that time  
