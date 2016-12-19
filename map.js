@@ -95,16 +95,15 @@ function initialize() {
     if (lat_start){
       console.log('Geolocated Lat: ' + lat_start);
       console.log('Geolocated Lon: ' + lon_start);
-      $("#start_coordinates").text(lat_start + ", " + lon_start);
-      $("#start_coordinates").select();
     }
     else{
       console.log('Could Not Find Location! Defaulting to Downtown San Francisco!');
       lat_start = 37.790854;
       lon_start = -122.401315;
-      $("#start_coordinates").text(lat_start + ", " + lon_start);
-      $("#start_coordinates").select();
     }
+
+    $("#start_coordinates").val("Your Location: " + short_coord(lat_start) + ", " + short_coord(lon_start));
+    $("#start_coordinates").select();
 
     resize_map()
     $(window).resize(resize_map);
@@ -146,7 +145,9 @@ function initialize() {
         $("#selectedloc").select();
         console.log("what is here:", $("#selectedloc").val());
 
-        elevation_url = "http://cors.io/?https://maps.googleapis.com/maps/api/elevation/json?locations="+lat_selected+","+lon_selected+"&key=AIzaSyAPV8hWJYamUd7TCnC6h6YcljuXnFW1lp8"
+        // http://cors.io/?
+        // elevation_url = "https://maps.googleapis.com/maps/api/elevation/json?locations="+lat_selected+","+lon_selected+"&key=AIzaSyAPV8hWJYamUd7TCnC6h6YcljuXnFW1lp8"
+        elevation_url = ""
         darksky_url = "http://stargazr.us-west-2.elasticbeanstalk.com/weather?lat="+lat_selected+"&lng="+lon_selected;
 	      lightpol_url = "http://stargazr.us-west-2.elasticbeanstalk.com/brightness?lat="+lat_selected+"&lng="+lon_selected;
     });
@@ -178,7 +179,7 @@ function initialize() {
     //on button press to get conditions at a site
     $( "#get-conditions-here" ).click(function() {
 
-      // console.log("URL2:", elevation_url);
+      console.log("URL2:", elevation_url);
 
         $("#dest_coordinates").val("Site Location: " + short_coord(lat_selected) + ", " + short_coord(lon_selected));
         $("#dest_coordinates").select();
@@ -239,7 +240,7 @@ function initialize() {
             //Populate HTML fields
             $("#cloudCover").html( Math.round(100*cloudCover) + "%");
             // $("#visibility").html(visibility);
-            $("#elevation").html(Math.round(elevation) + " m");
+            // $("#elevation").html(Math.round(elevation) + " m");
             $("#humidity").html(Math.round(100*humidity) + "%");
             $("#precipProbability").html(100*Math.round(precipProbability) + "%");
             $("#moonPhase").html(Math.round(100*moonPhase) + "% Full");
