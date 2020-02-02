@@ -24,3 +24,5 @@ These factors are then put together into a single number to rate the site's qual
 - Elevation (Higher Elevation means less atmosphere above you to distort night sky)
 
 URL: www.briangcastro.com/stargazr
+
+Thanks!
